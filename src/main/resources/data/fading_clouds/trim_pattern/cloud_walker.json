@@ -1,0 +1,7 @@
+{
+  "asset_id": "fading_clouds:cloud_walker",
+  "description": {
+    "translate": "trim_pattern.fading_clouds.cloud_walker_armor_trim_smithing_template"
+  },
+  "template_item": "fading_clouds:cloud_walker_armor_trim_smithing_template"
+}

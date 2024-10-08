@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fading_clouds:item/cloud_walker_armor_trim_smithing_template"
+  }
+}

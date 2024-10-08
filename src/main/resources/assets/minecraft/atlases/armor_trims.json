@@ -1,0 +1,16 @@
+{
+  "sources": [
+    {
+      "type": "paletted_permutations",
+      "textures": [
+        "fading_clouds:trims/models/armor/cloud_walker",
+        "fading_clouds:trims/models/armor/cloud_walker_leggings"
+      ],
+      "palette_key": "trims/color_palettes/trim_palette",
+      "permutations": {
+        "cloud_walker": "fading_clouds:trims/color_palettes/cloud_walker"
+
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#C#",
+    "#D#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "fading_clouds:cloud_bottles"
+    },
+    "C": {
+      "item": "fading_clouds:fading_cloud"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "id": "fading_clouds:cloud_walker_armor_trim_smithing_template",
+    "count": 1
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.lemo.fading_clouds.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "GlassBottleItemMixin",
+    "ServerPlayerEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

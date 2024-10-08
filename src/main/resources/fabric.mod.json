@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "fading_clouds",
+  "version": "${version}",
+  "name": "Fading Clouds",
+  "description": "Adds an item that lets you walk on air!",
+  "authors": [
+    "yurpio",
+    "Chronosacaria (Art/good teacher)"
+  ],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/fading_clouds/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.lemo.fading_clouds.client.FadingCloudsClient"
+    ],
+    "main": [
+      "me.lemo.fading_clouds.FadingClouds"
+    ]
+  },
+  "mixins": [
+    "fading_clouds.mixins.json",
+    {
+      "config": "fading_clouds.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": ">=1.21.0"
+  }
+}

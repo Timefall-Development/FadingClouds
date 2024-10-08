@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "fading_clouds:block/fading_cloud_block_2"
+  }
+}

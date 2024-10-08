@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_trim",
+  "category": "equipment",
+  "template": {
+    "item": "fading_clouds:cloud_walker_armor_trim_smithing_template"
+  },
+  "base": {
+    "tag": "fading_clouds:vanilla_boots"
+  },
+  "addition": {
+    "item": "fading_clouds:fading_cloud"
+  }
+}
