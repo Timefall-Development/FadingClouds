@@ -2,13 +2,20 @@
   "itemGroup.fading_clouds": "Fading Clouds",
   "item.fading_clouds.fading_cloud": "Fading Cloud",
   "item.fading_clouds.pink_cloud_bottle": "Bottled Cloud",
+  "item.fading_clouds.pink_cloud_bottle.lore": "Hot Biome",
   "item.fading_clouds.lavender_cloud_bottle": "Bottled Cloud",
+  "item.fading_clouds.lavender_cloud_bottle.lore": "Cold Biome",
   "item.fading_clouds.lilac_cloud_bottle": "Bottled Cloud",
+  "item.fading_clouds.lilac_cloud_bottle.lore": "Temperate Biome",
   "item.fading_clouds.purple_cloud_bottle": "Bottled Cloud",
+  "item.fading_clouds.purple_cloud_bottle.lore": "Ultra Hot Biome",
   "item.fading_clouds.blue_cloud_bottle": "Bottled Cloud",
+  "item.fading_clouds.blue_cloud_bottle.lore": "Frozen Biome",
   "item.fading_clouds.cloud_walker_armor_trim_smithing_template": "Smithing Template",
   "block.fading_clouds.fading_cloud_block": "Fading Block",
   "trim_pattern.fading_clouds.cloud_walker_armor_trim_smithing_template": "Cloud Walker Armor Trim",
   "tag.item.fading_clouds.cloud_bottles": "Cloud Bottles",
-  "tag.item.fading_clouds.vanilla_boots": "Vanilla Boots"
+  "tag.item.fading_clouds.vanilla_boots": "Vanilla Boots",
+  "gamerule.removeFadedBlocks": "Remove Faded Cloud Blocks",
+  "gamerule.removeFadedBlocks.description": "Faded Cloud Blocks should be removed even when the player is standing on them."
 }

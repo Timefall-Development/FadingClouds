@@ -1,5 +1,6 @@
 package me.lemo.fading_clouds;
 
+import me.lemo.fading_clouds.gamerule.RemoveFadedBlocksGameRule;
 import me.lemo.fading_clouds.registry.FadingCloudsBlocks;
 import me.lemo.fading_clouds.registry.FadingCloudsItemGroups;
 import me.lemo.fading_clouds.registry.FadingCloudsItems;
@@ -13,6 +14,7 @@ public class FadingClouds implements ModInitializer {
     }
     @Override
     public void onInitialize() {
+        RemoveFadedBlocksGameRule.register();
         FadingCloudsItems.register();
         FadingCloudsBlocks.register();
         FadingCloudsItemGroups.register();

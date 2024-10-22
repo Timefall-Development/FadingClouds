@@ -1,5 +1,6 @@
 package me.lemo.fading_clouds.block;
 
+import me.lemo.fading_clouds.gamerule.RemoveFadedBlocksGameRule;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -8,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.tag.EntityTypeTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -65,11 +67,22 @@ public class FadingCloudBlock extends TransparentBlock {
     }
 
     private boolean increaseAge(BlockState state, World world, BlockPos pos) {
+        PlayerEntity playerEntity = world.getClosestPlayer(pos.getX(), pos.getY() + 1, pos.getZ(), 1.75, false);
+
         int ageState = state.get(AGE);
+
         if (ageState < 4) {
             world.setBlockState(pos, state.with(AGE, ageState + 1), Block.NOTIFY_LISTENERS);
             return false;
         }
+        if (playerEntity == null && world.getGameRules().getBoolean(RemoveFadedBlocksGameRule.REMOVE_FADED_BLOCKS)) {
+            this.fade(world, pos);
+            return true;
+        }
+        if (playerEntity != null && !world.getGameRules().getBoolean(RemoveFadedBlocksGameRule.REMOVE_FADED_BLOCKS)) {
+            return false;
+        }
+
         this.fade(world, pos);
         return true;
     }
