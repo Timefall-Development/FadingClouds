@@ -5,9 +5,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.GlassBottleItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
+import net.minecraft.item.Items;
 import net.minecraft.stat.Stats;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -42,21 +43,20 @@ public class GlassBottleItemMixin {
     float ultraHot = 2.0f;
 
     @Inject(method = "use", at = @At(value = "HEAD"), cancellable = true)
-    public void fading_clouds$collectCloudsOnUse(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> cir) {
+    public void fading_clouds$collectCloudsOnUse(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
         if (world.isClient())
             return;
 
         ItemStack heldStack = user.getStackInHand(hand);
 
-
         float temperature = user.getWorld().getBiome(user.getBlockPos()).value().getTemperature();
 
         ItemStack cloudBottleItemStack = fading_clouds$getCloudBottleColorFromTemperature(temperature);
 
-        if (user.getY() >= 330 && fading_clouds$isInOverworld(user)){
-            cir.setReturnValue(TypedActionResult.success(this.fading_clouds$fill(heldStack, user, cloudBottleItemStack)));
+        if (heldStack.isOf(Items.GLASS_BOTTLE) && user.getY() >= 330 && fading_clouds$isInOverworld(user)){
+            cir.setReturnValue(ActionResult.SUCCESS.withNewHandStack(fading_clouds$fill(heldStack, user, cloudBottleItemStack)));
         } else {
-            cir.setReturnValue(TypedActionResult.consume(heldStack));
+            cir.setReturnValue(ActionResult.CONSUME);
         }
     }
 

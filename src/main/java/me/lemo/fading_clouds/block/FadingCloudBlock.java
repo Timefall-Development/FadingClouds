@@ -50,6 +50,7 @@ public class FadingCloudBlock extends TransparentBlock {
         this.fade(world, pos);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private boolean canFade(BlockView world, BlockPos pos, int maxNeighbors) {
         int i = 0;
         BlockPos.Mutable mutableBlockPosition = new BlockPos.Mutable();
@@ -63,28 +64,31 @@ public class FadingCloudBlock extends TransparentBlock {
 
     protected void fade(World world, BlockPos pos) {
         world.setBlockState(pos, getUnfadedState());
-        world.updateNeighbor(pos, getUnfadedState().getBlock(), pos);
+        world.updateNeighbor(pos, getUnfadedState().getBlock(), null);
     }
 
     private boolean increaseAge(BlockState state, World world, BlockPos pos) {
-        PlayerEntity playerEntity = world.getClosestPlayer(pos.getX(), pos.getY() + 1, pos.getZ(), 1.75, false);
+        if (world instanceof ServerWorld serverWorld) {
+            PlayerEntity playerEntity = world.getClosestPlayer(pos.getX(), pos.getY() + 1, pos.getZ(), 1.75, false);
 
-        int ageState = state.get(AGE);
+            int ageState = state.get(AGE);
 
-        if (ageState < 4) {
-            world.setBlockState(pos, state.with(AGE, ageState + 1), Block.NOTIFY_LISTENERS);
-            return false;
-        }
-        if (playerEntity == null && world.getGameRules().getBoolean(RemoveFadedBlocksGameRule.REMOVE_FADED_BLOCKS)) {
+            if (ageState < 4) {
+                world.setBlockState(pos, state.with(AGE, ageState + 1), Block.NOTIFY_LISTENERS);
+                return false;
+            }
+            if (playerEntity == null && serverWorld.getGameRules().getBoolean(RemoveFadedBlocksGameRule.REMOVE_FADED_BLOCKS)) {
+                this.fade(world, pos);
+                return true;
+            }
+            if (playerEntity != null && !serverWorld.getGameRules().getBoolean(RemoveFadedBlocksGameRule.REMOVE_FADED_BLOCKS)) {
+                return false;
+            }
+
             this.fade(world, pos);
             return true;
         }
-        if (playerEntity != null && !world.getGameRules().getBoolean(RemoveFadedBlocksGameRule.REMOVE_FADED_BLOCKS)) {
-            return false;
-        }
-
-        this.fade(world, pos);
-        return true;
+        return false;
     }
 
     @Override
@@ -115,7 +119,7 @@ public class FadingCloudBlock extends TransparentBlock {
 
             this.fading_clouds$computeFallDamage(livingEntity);
         } else if (entity instanceof LivingEntity livingEntity && !world.getBlockState(livingEntity.getBlockPos().down()).isOf(this)) {
-            EntityAttributeInstance entityAttributeInstance = ((LivingEntity)entity).getAttributeInstance(EntityAttributes.GENERIC_FALL_DAMAGE_MULTIPLIER);
+            EntityAttributeInstance entityAttributeInstance = livingEntity.getAttributeInstance(EntityAttributes.FALL_DAMAGE_MULTIPLIER);
             if (entityAttributeInstance != null)
 
                 entityAttributeInstance.setBaseValue(1.0f);
@@ -126,7 +130,7 @@ public class FadingCloudBlock extends TransparentBlock {
         if (livingEntity.getType().isIn(EntityTypeTags.FALL_DAMAGE_IMMUNE)) {
             return;
         }
-        EntityAttributeInstance entityAttributeInstance = livingEntity.getAttributeInstance(EntityAttributes.GENERIC_FALL_DAMAGE_MULTIPLIER);
+        EntityAttributeInstance entityAttributeInstance = livingEntity.getAttributeInstance(EntityAttributes.FALL_DAMAGE_MULTIPLIER);
         if (entityAttributeInstance != null )
 
             entityAttributeInstance.setBaseValue(0.0f);

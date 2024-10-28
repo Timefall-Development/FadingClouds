@@ -7,6 +7,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 
 public class FadingCloudsBlocks {
@@ -15,7 +17,8 @@ public class FadingCloudsBlocks {
                     .copy(Blocks.GLASS)
                     .ticksRandomly()
                     .sounds(BlockSoundGroup.SHROOMLIGHT)
-                    .nonOpaque()),
+                    .nonOpaque()
+                    .registryKey(getBlockRegistryKey("fading_cloud_block"))),
             "fading_cloud_block"
     );
 
@@ -23,7 +26,12 @@ public class FadingCloudsBlocks {
 
     }
 
+    @SuppressWarnings("SameParameterValue")
     protected static Block registerBlock(Block block, String id){
         return Registry.register(Registries.BLOCK, FadingClouds.id(id), block);
+    }
+
+    public static RegistryKey<Block> getBlockRegistryKey(String id) {
+        return RegistryKey.of(RegistryKeys.BLOCK, FadingClouds.id(id));
     }
 }

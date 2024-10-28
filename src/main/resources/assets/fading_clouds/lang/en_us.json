@@ -14,6 +14,7 @@
   "item.fading_clouds.cloud_walker_armor_trim_smithing_template": "Smithing Template",
   "block.fading_clouds.fading_cloud_block": "Fading Block",
   "trim_pattern.fading_clouds.cloud_walker_armor_trim_smithing_template": "Cloud Walker Armor Trim",
+  "trim_material.fading_clouds.cloud_walker": "Fading Cloud Material",
   "tag.item.fading_clouds.cloud_bottles": "Cloud Bottles",
   "tag.item.fading_clouds.vanilla_boots": "Vanilla Boots",
   "gamerule.removeFadedBlocks": "Remove Faded Cloud Blocks",

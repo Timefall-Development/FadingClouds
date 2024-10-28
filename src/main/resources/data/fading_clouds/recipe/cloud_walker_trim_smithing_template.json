@@ -1,23 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "#fading_clouds:cloud_bottles",
+    "C": "fading_clouds:fading_cloud",
+    "D": "minecraft:diamond"
+  },
   "pattern": [
     "#C#",
     "#D#",
     "###"
   ],
-  "key": {
-    "#": {
-      "tag": "fading_clouds:cloud_bottles"
-    },
-    "C": {
-      "item": "fading_clouds:fading_cloud"
-    },
-    "D": {
-      "item": "minecraft:diamond"
-    }
-  },
   "result": {
-    "id": "fading_clouds:cloud_walker_armor_trim_smithing_template",
-    "count": 1
+    "count": 1,
+    "id": "fading_clouds:cloud_walker_armor_trim_smithing_template"
   }
 }
