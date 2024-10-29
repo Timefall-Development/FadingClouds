@@ -61,7 +61,7 @@ public class ServerPlayerEntityMixin {
         if (!serverPlayerEntity.isCreative()) {
             ItemStack stack = serverPlayerEntity.getEquippedStack(EquipmentSlot.FEET);
             if (serverPlayerEntity.getWorld().getTime() % 20 == 0) {
-                stack.damage(1, serverPlayerEntity, EquipmentSlot.MAINHAND);
+                stack.damage(1, serverPlayerEntity, EquipmentSlot.FEET);
             }
             if (stack.getDamage() <= 0) {
                 serverPlayerEntity.getWorld().playSound(
