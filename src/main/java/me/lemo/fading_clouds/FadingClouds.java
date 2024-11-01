@@ -2,6 +2,7 @@ package me.lemo.fading_clouds;
 
 import me.lemo.fading_clouds.gamerule.RemoveFadedBlocksGameRule;
 import me.lemo.fading_clouds.registry.FadingCloudsBlocks;
+import me.lemo.fading_clouds.registry.FadingCloudsEvents;
 import me.lemo.fading_clouds.registry.FadingCloudsItemGroups;
 import me.lemo.fading_clouds.registry.FadingCloudsItems;
 import net.fabricmc.api.ModInitializer;
@@ -18,5 +19,6 @@ public class FadingClouds implements ModInitializer {
         FadingCloudsItems.register();
         FadingCloudsBlocks.register();
         FadingCloudsItemGroups.register();
+        FadingCloudsEvents.register();
     }
 }

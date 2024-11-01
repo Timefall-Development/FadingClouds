@@ -4,7 +4,6 @@
   "package": "me.lemo.fading_clouds.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "GlassBottleItemMixin",
     "ServerPlayerEntityMixin"
   ],
   "injectors": {
