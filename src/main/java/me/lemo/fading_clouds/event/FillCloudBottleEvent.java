@@ -75,7 +75,9 @@ public class FillCloudBottleEvent {
                     return ActionResult.SUCCESS.withNewHandStack(fading_clouds$fill(heldStack, player, cloudBottleItemStack));
                 }
             }
-            return ActionResult.CONSUME;
+            // We need to make sure that we pass the event along if we are unable to fill a bottle, otherwise
+            //  it can break other mods or even future vanilla functionality
+            return ActionResult.PASS;
         });
     }
 

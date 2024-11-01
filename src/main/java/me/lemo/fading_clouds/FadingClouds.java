@@ -15,10 +15,10 @@ public class FadingClouds implements ModInitializer {
     }
     @Override
     public void onInitialize() {
+        FadingCloudsEvents.addListeners();
         RemoveFadedBlocksGameRule.register();
         FadingCloudsItems.register();
         FadingCloudsBlocks.register();
         FadingCloudsItemGroups.register();
-        FadingCloudsEvents.register();
     }
 }
